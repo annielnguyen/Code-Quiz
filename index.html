@@ -6,27 +6,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Coding Quiz Trivia</title>
     <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
+    
 </head>
 <body>
+    <h1 style="text-align: center">Code Quiz Trivia</h1>
     <!--Start button for quiz-->
-    <div class="start_button"><button>Click to Start Quiz</button></div>
+    <div ><button class="start_button">Start Quiz</button></div>
     <!--Game Instructions-->
     <div class="instructions_box">
         <div class= "instructions_title">
             <span>How To Play</span>
         </div>
         <div class="instructions_list"></div>
-            <div class= "1. You will have 90 seconds to answer 10 questions"></div>
-            <div class= "2. An incorrect answer selection will deduct 5 seconds from the timer"></div>
-            <div class= "3. The game is over once all questions have been answered OR the timer reaches 0 seconds"></div>
-            <div class= "Good luck!"></div>
+            <div class="info">1. You will have <span> 90 seconds </span> to answer 10 questions</div>
+            <div class="info">2. An incorrect answer selection will deduct 5 seconds from the timer</div>
+            <div class="info">3. The game is over once all questions have been answered OR the timer reaches 0 seconds</div>
+            <div class="info" style="text-align:center">Good luck!</div>
     </div>
-    <div class="choice_buttons">
-        <button class= "quit">Exit</button>
-        <button class= "Proceed">Proceed</button>
-    </div>
+   
+      <main>
+        <section>
+            <div class= "card timer">
+              <div class = "timer-text">
+              <div class="large-font timer-count">100</div>
+              <h3>seconds remaining</h3>
+            </div>
+          
+            </div>
+          </div>
+        </section>
 </body>
+<script src="script.js"></script>
 </html>
 
 <!--GIVEN I am taking a code quiz
