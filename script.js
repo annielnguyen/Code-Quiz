@@ -7,10 +7,12 @@ var question     = document.querySelector("#question");
 console.log(choices)
 var timer;
 var timerCount;
+var currQ;
+
+    
+    
 
 //Array of questions in quiz
-
-//var questions = ["Inside which HTML element do we put the JavaScript?","Where is the correct place to insert a JavaScript?","What is the correct syntax for referring to an external script called 'xxx.js'?"];
 const myQuestions = [
     {
       question: "Inside which HTML element do we put the JavaScript?",
@@ -18,7 +20,6 @@ const myQuestions = [
         a: '<script>',     
         b: '<scripting>',
         c: '<js>',
-        d: '<javascript>'
       },
       correctAnswer: "a"
     },
@@ -61,16 +62,43 @@ const myQuestions = [
         correctAnswer: "a"
         }
 ];
+
+for (var i =0; i < choices.length; i++) {
+    choices[i].addEventListener("click", function(event) {
+        var ans = event.target.getAttribute("data-number");
+        if (myQuestions[currQ]["correctAnswer"] == ans ){
+            console.log("Correct")
+            event.target.style.color = "Green"
+        } else{
+            console.log("Wrong");
+            event.target.style.color = "Red"
+        }
+        
+        var timer = setInterval(function(){
+            currQ += 1
+            updateQuestion();
+            clearInterval(timer);
+        },1000);
+
+    });
+}
+
+function updateQuestion(){
+    question.textContent = myQuestions[currQ]["question"]
+    for(var i = 0 ; i < choices.length ; ++i){
+        choices[i].style.color = "black"
+        var question_idx = String.fromCharCode(97 + i)
+        choices[i].textContent = myQuestions[currQ]["answers"][question_idx]
+    }
+}
+
 // The startGame function is called when the start button is clicked
 function startGame() {
     timerCount = 100;
     // Prevents start button from being clicked when round is in progress
     startButton.disabled = true;
-    question.textContent = myQuestions[0]["question"]
-    for(var i = 0 ; i < choices.length ; ++i){
-        var question_idx = String.fromCharCode(97 + i)
-        choices[i].textContent = myQuestions[0]["answers"][question_idx]
-    }
+    currQ = 0
+    updateQuestion();
     quiz_block.style.display = "block"
     startButton.innerText = "Quit Quiz"
     startTimer()
