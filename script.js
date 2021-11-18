@@ -8,6 +8,7 @@ console.log(choices)
 var timer;
 var timerCount;
 var currQ;
+// var score= 
 
     
     
@@ -69,9 +70,11 @@ for (var i =0; i < choices.length; i++) {
         if (myQuestions[currQ]["correctAnswer"] == ans ){
             console.log("Correct")
             event.target.style.color = "Green"
+
         } else{
             console.log("Wrong");
-            event.target.style.color = "Red"
+            event.target.style.color = "Red";
+            timerCount -= 10;
         }
         
         var timer = setInterval(function(){
