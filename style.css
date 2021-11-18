@@ -10,15 +10,15 @@ body{
 }
 
 .start_button{
-    position: absolute;
+    position: relative;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -0%);
 }
 
 /* Start button styling */
 
-.start_button button{
+.start_button {
     font-size: 20px;
     font-weight: 100;
     padding: 10px 10px;
@@ -28,20 +28,58 @@ body{
     
 }
 
+/* View High Scores styling*/
+
+#highscore-btn { 
+    font-size: 25px;
+    font-weight: 100;
+    text-align: center;
+    color:purple;
+    font-family: cursive;
+
+}
+
+
 /*Instruction box styling */
 .instructions_title{
     text-align: center;
     font-weight: bolder;
     
 }
+
+.instruction_list {
+    margin: auto;
+}
 .instructions_box{
     border: 2px purple solid;
-    position: absolute;
     margin-left: auto;
     margin-right: auto;
-    top: 30%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    width: 50%;
+    /* top: 30%;
+    left: 50%; */
+    /* transform: translate(-50%, -50%); */
     padding: 10px;
 
+}
+/* Question Box styling */
+.choice-container {
+    background: lightseagreen;
+    /* display: flex; */
+    margin-bottom: 10px;
+    font-size: larger;
+}
+
+.Quiz { 
+    display:None
+}
+.choice-prefix {
+padding: 10px;
+}
+
+.correct {
+    background: green;
+}
+
+incorrect {
+    background: red;
 }

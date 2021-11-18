@@ -11,30 +11,55 @@
 <body>
     <h1 style="text-align: center">Code Quiz Trivia</h1>
     <!--Start button for quiz-->
-    <div ><button class="start_button">Start Quiz</button></div>
+
+    <a href="/highscores.html" id="highscore-btn" 
+    class="btn">View High Scores</a>
+    <section>
+        <div class= "card timer">
+          <div class = "timer-text">
+          <div class="large-font timer-count">100</div>
+          <h3>seconds remaining</h3>
+        </div>
+      
+        </div>
+      </div>
+    </section>
     <!--Game Instructions-->
     <div class="instructions_box">
         <div class= "instructions_title">
             <span>How To Play</span>
         </div>
-        <div class="instructions_list"></div>
-            <div class="info">1. You will have <span> 90 seconds </span> to answer 10 questions</div>
+        <div class="instructions_list">
+            <div class="info">1. You will have <span> 90 seconds </span> to answer 5 questions</div>
             <div class="info">2. An incorrect answer selection will deduct 5 seconds from the timer</div>
             <div class="info">3. The game is over once all questions have been answered OR the timer reaches 0 seconds</div>
             <div class="info" style="text-align:center">Good luck!</div>
+            <button class="start_button">Start Quiz</button>
+        </div>
+    </div>
+            <!-- Questions-->
+    <section class="Quiz">
+        <div id="question"> "Inside which HTML element do we put the JavaScript?</div>
+        <div class="choice-container">
+        <p class="choice-prefix">A</p>
+        <p class="choice-text" data-number="1">Choice</p>
+        </div>
+    <div class="choice-container">
+        <p class="choice-prefix">B</p>
+        <p class="choice-text" data-number="2">Choice</p>
+    </div>
+    <div class="choice-container">
+        <p class="choice-prefix">C</p>
+        <p class="choice-text" data-number="3">Choice</p>
+    </div>
+    <div class="choice-container">
+        <p class="choice-prefix">D</p>
+        <p class="choice-text" data-number="4">Choice</p>
     </div>
    
-      <main>
-        <section>
-            <div class= "card timer">
-              <div class = "timer-text">
-              <div class="large-font timer-count">100</div>
-              <h3>seconds remaining</h3>
-            </div>
-          
-            </div>
-          </div>
-        </section>
+</section>
+   
+ 
 </body>
 <script src="script.js"></script>
 </html>
