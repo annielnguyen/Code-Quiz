@@ -63,7 +63,7 @@ body{
 }
 /* Question Box styling */
 .choice-container {
-    background: lightseagreen;
+    background: white;
     /* display: flex; */
     margin-bottom: 10px;
     font-size: larger;
@@ -82,4 +82,10 @@ padding: 10px;
 
 incorrect {
     background: red;
+}
+
+/*Initials*/
+
+.Initials_area {
+    display: none;
 }

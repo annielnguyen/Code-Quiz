@@ -8,8 +8,9 @@ console.log(choices)
 var timer;
 var timerCount;
 var currQ;
-// var score= 
+var initialScore  =document.querySelector(".Initials_area");
 
+console.log(initialScore)
     
     
 
@@ -68,17 +69,13 @@ for (var i =0; i < choices.length; i++) {
     choices[i].addEventListener("click", function(event) {
         var ans = event.target.getAttribute("data-number");
         if (myQuestions[currQ]["correctAnswer"] == ans ){
-            console.log("Correct")
-            event.target.style.color = "Green"
-
+            event.target.style.color = "Green";
         } else{
-            console.log("Wrong");
             event.target.style.color = "Red";
             timerCount -= 10;
         }
-        
+        currQ += 1
         var timer = setInterval(function(){
-            currQ += 1
             updateQuestion();
             clearInterval(timer);
         },1000);
@@ -87,12 +84,13 @@ for (var i =0; i < choices.length; i++) {
 }
 
 function updateQuestion(){
+  if (currQ<myQuestions.length){
     question.textContent = myQuestions[currQ]["question"]
     for(var i = 0 ; i < choices.length ; ++i){
         choices[i].style.color = "black"
         var question_idx = String.fromCharCode(97 + i)
         choices[i].textContent = myQuestions[currQ]["answers"][question_idx]
-    }
+  }}
 }
 
 // The startGame function is called when the start button is clicked
@@ -111,13 +109,22 @@ function startGame() {
 function startTimer() {
     // Sets timer
     timer = setInterval(function() {
+      // setTimeout
       timerCount--;
       timerElement.textContent = timerCount;
+      if (currQ == myQuestions.length){
+           clearInterval(timer);
+           displayScore();
+      }
       if (timerCount === 0) {
           clearInterval(timer);
+          displayScore();
       }
     }, 1000);
   }
-
+function displayScore(){
+  quiz_block.style.display  = "none";
+  initialScore.style.display= "block";
+}
   // Attach event listener to start button to call startGame function on click
 startButton.addEventListener("click", startGame);
