@@ -29,12 +29,15 @@ body{
     
 }
 
+th {
+    padding-right: 10px;
+}
+
 /* View High Scores styling*/
 
 #highscore-btn { 
     font-size: 25px;
     font-weight: 100;
-    text-align: center;
     color:purple;
     font-family: cursive;
 

@@ -10,26 +10,57 @@ var currQ;
 var initialScore  =document.querySelector(".Initials_area");
 var submitButton  =document.querySelector("#submit");
 var submitInput   =document.querySelector(".submit_input");
-var scoreList       =document.querySelector(".High-Scores");
-localStorage.setItem("Scores","[]") 
+var scoreList     =document.querySelector(".High-Score");
 
+
+
+
+
+
+
+window.addEventListener('load', (event) => {
+  fillTableOnStart(); 
+});
+
+
+function fillTableOnStart(){
+  var items = localStorage.getItem("Scores");
+  if (items == null){
+    return;
+  }else {
+    fillTable(JSON.parse(items), 5);
+  }
+}
+
+function fillTable(scores, end){
+  topscores =  " <tr><th>Name</th><th>Score</th></tr>"
+  for(var i =0 ; i < scores.length ; ++i){
+    topscores += "<tr>"
+    topscores += "<th>" + scores[i]["name"] + "</th>" +  "<th>" + String(scores[i]["score"]) + "</th>"
+    topscores += "</tr>"
+    if ( i == end-1) break;
+  }
+  scoreList.innerHTML = topscores
+}
 
 
 function displayTopScores(items){
-  if(items.length > 1){
-    items.sort(function(a,b){
-      return b.score - a.score
-    });
-  }
-  console.log(items)
 
+  items.sort(function(a,b){
+    return b.score - a.score
+  });
+  fillTable(items,5)
 }
 
 function manageStore(new_score){
   var item = localStorage.getItem("Scores");
-  var items  = JSON.parse(item)
-  items.push(new_score)
-
+  if(item != null)
+  {
+    var items = JSON.parse(item)
+    items.push(new_score)
+  } else {
+    var items = [new_score]
+  }
 
   displayTopScores(items)
   localStorage.setItem("Scores",JSON.stringify(items))
@@ -40,6 +71,7 @@ function addScore(){
   //var items = localStorage.getItem("Names");
   //var scores= localStorage.getItem("Scores");
   new_score = {name: name , score: timerCount};
+  console.log(timerCount)
   manageStore(new_score)
   initialScore.style.display = "None"
   startButton.disabled = false
@@ -101,6 +133,7 @@ const myQuestions = [
         correctAnswer: "a"
         }
 ];
+/*checks to see if answer is correct; will deduct time if answer is incorrect */
 
 for (var i =0; i < choices.length; i++) {
     choices[i].addEventListener("click", function(event) {
@@ -119,7 +152,7 @@ for (var i =0; i < choices.length; i++) {
 
     });
 }
-
+// brings up the next question in the quiz
 function updateQuestion(){
   if (currQ<myQuestions.length){
     question.textContent = myQuestions[currQ]["question"]
@@ -145,13 +178,13 @@ function startGame() {
 function startTimer() {
     // Sets timer
     timer = setInterval(function() {
-      // setTimeout
+      
       timerCount--;
       timerElement.textContent = timerCount;
       if (currQ == myQuestions.length){
            clearInterval(timer);
            displayScore();
-      }
+      } // setTimeout
       if (timerCount === 0) {
           clearInterval(timer);
           displayScore();
@@ -163,13 +196,6 @@ function displayScore(){
   initialScore.style.display= "block";
 }
 
-//  function viewScores (event){
-//   var highscores= initials_area.value + " " + correctsc
-
-//  const highscores = JSON.parse(localStorage.getItem("highscores"));
-//  console.log(highscores);
-
-//  finalScore.innerText = mostRecentScore;
 
 
 
