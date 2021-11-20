@@ -4,13 +4,50 @@ var timerElement = document.querySelector(".timer-count");
 var quiz_block   = document.querySelector(".Quiz");
 var choices      = document.querySelectorAll(".choice-text");
 var question     = document.querySelector("#question");
-console.log(choices)
 var timer;
 var timerCount;
 var currQ;
 var initialScore  =document.querySelector(".Initials_area");
+var submitButton  =document.querySelector("#submit");
+var submitInput   =document.querySelector(".submit_input");
+var scoreList       =document.querySelector(".High-Scores");
+localStorage.setItem("Scores","[]") 
 
-console.log(initialScore)
+
+
+function displayTopScores(items){
+  if(items.length > 1){
+    items.sort(function(a,b){
+      return b.score - a.score
+    });
+  }
+  console.log(items)
+
+}
+
+function manageStore(new_score){
+  var item = localStorage.getItem("Scores");
+  var items  = JSON.parse(item)
+  items.push(new_score)
+
+
+  displayTopScores(items)
+  localStorage.setItem("Scores",JSON.stringify(items))
+}
+
+function addScore(){
+  var name = submitInput.value;
+  //var items = localStorage.getItem("Names");
+  //var scores= localStorage.getItem("Scores");
+  new_score = {name: name , score: timerCount};
+  manageStore(new_score)
+  initialScore.style.display = "None"
+  startButton.disabled = false
+}
+
+
+
+submitButton.addEventListener("click", addScore)
     
     
 
@@ -95,13 +132,12 @@ function updateQuestion(){
 
 // The startGame function is called when the start button is clicked
 function startGame() {
-    timerCount = 100;
+    timerCount = 60;
     // Prevents start button from being clicked when round is in progress
     startButton.disabled = true;
     currQ = 0
     updateQuestion();
     quiz_block.style.display = "block"
-    startButton.innerText = "Quit Quiz"
     startTimer()
   }
 
@@ -126,5 +162,17 @@ function displayScore(){
   quiz_block.style.display  = "none";
   initialScore.style.display= "block";
 }
+
+//  function viewScores (event){
+//   var highscores= initials_area.value + " " + correctsc
+
+//  const highscores = JSON.parse(localStorage.getItem("highscores"));
+//  console.log(highscores);
+
+//  finalScore.innerText = mostRecentScore;
+
+
+
+
   // Attach event listener to start button to call startGame function on click
 startButton.addEventListener("click", startGame);

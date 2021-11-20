@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Coding Quiz Trivia</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
     
 </head>
@@ -14,10 +15,13 @@
 
     <a href="/highscores.html" id="highscore-btn" 
     class="btn">View High Scores</a>
+    <p class="High-Score"></p>
+   
+    
     <section>
-        <div class= "card timer">
+        <div class= "cardtimer">
           <div class = "timer-text">
-          <div class="large-font timer-count">100</div>
+          <div class="large-font timer-count">60</div>
           <h3>seconds remaining</h3>
         </div>
       
@@ -30,8 +34,9 @@
             <span>How To Play</span>
         </div>
         <div class="instructions_list">
-            <div class="info">1. You will have <span> 90 seconds </span> to answer 5 questions</div>
+            <div class="info">1. You will have <span> 60 seconds </span> to answer 5 questions</div>
             <div class="info">2. An incorrect answer selection will deduct 10 seconds from the timer</div>
+            <div class="info">3. You will be unable to exit the quiz once you start</div>
             <div class="info">3. The game is over once all questions have been answered OR the timer reaches 0 seconds</div>
             <div class="info" style="text-align:center">Good luck!</div>
             <button class="start_button">Start Quiz</button>
@@ -57,10 +62,13 @@
 
   <section class="Initials_area">
       <p>Please enter your initials</p>
-      <input>
-      <button>Submit Score</button>
+      <input type="text" class= "submit_input">
+      <button id="submit">Submit Score</button>
   </section>
  
+ 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
 <script src="script.js"></script>
 </html>
