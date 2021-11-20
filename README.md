@@ -13,3 +13,4 @@ Languages used: HTML, JavaScript, CSS
 
 ## Links 
 https://github.com/annielnguyen/Code-Quiz
+https://annielnguyen.github.io/Code-Quiz/
